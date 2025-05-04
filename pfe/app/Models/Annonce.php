@@ -28,7 +28,9 @@ class Annonce extends Model
         'prix',
         'id_utilisateur',
         'localisation',
-        'categorie'
+        'id_categorie',
+        'id_sous_categorie',
+        'statut'
     ];
 
     /**
@@ -48,9 +50,36 @@ class Annonce extends Model
     {
         return $this->belongsTo(Utilisateur::class, 'id_utilisateur');
     }
-       // Relationship with images
-       public function images()
-       {
-           return $this->hasMany(Image::class, 'id_annonce');
-       }
+
+    /**
+     * Get the categorie that owns the annonce.
+     */
+    public function categorie(): BelongsTo
+    {
+        return $this->belongsTo(Categorie::class, 'id_categorie');
+    }
+
+    /**
+     * Get the sous-categorie that owns the annonce.
+     */
+    public function sousCategorie(): BelongsTo
+    {
+        return $this->belongsTo(SousCategorie::class, 'id_sous_categorie');
+    }
+
+    /**
+     * Get the images for the annonce.
+     */
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'id_annonce');
+    }
+
+    /**
+     * Get the favorites for the annonce.
+     */
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class, 'id_annonce');
+    }
 }

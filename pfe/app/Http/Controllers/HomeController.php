@@ -106,4 +106,9 @@ class HomeController extends Controller
         }
         return view( 'home',compact('page','ads','details'));
     }
+    public function showAuthForm()
+    {
+        $page='page4';
+        return view('home',compact('page'));
+    }
 }

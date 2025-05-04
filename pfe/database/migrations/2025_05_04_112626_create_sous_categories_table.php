@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('sous_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_annonce')->constrained('annonces')->onDelete('cascade');
-            $table->string('url', 500);
-            $table->boolean('principale')->default(false);
             $table->timestamps();
         });
     }
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('sous_categories');
     }
 };

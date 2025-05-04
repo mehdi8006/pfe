@@ -235,7 +235,7 @@
         </div>
 
         <div class="actions">
-            <a href="">
+            <a href="{{ route('form') }}">
                 <button class="btn btn-login" id="login-btn">
                     <i class="fa-solid fa-right-to-bracket"></i>
                 Connexion

@@ -19,9 +19,10 @@ return new class extends Migration
             $table->timestamp('date_publication')->useCurrent();
             $table->foreignId('id_utilisateur')->constrained('utilisateurs');
             $table->string('localisation', 100);
-
-            $table->string('categorie', 100);
-            $table->timestamps(); // Creates created_at and updated_at columns
+            $table->foreignId('id_categorie')->constrained('categories');
+            $table->foreignId('id_sous_categorie')->nullable()->constrained('sous_categories');
+            $table->enum('statut', ['en_attente', 'validee', 'supprimee'])->default('en_attente');
+            $table->timestamps();
         });
     }
 

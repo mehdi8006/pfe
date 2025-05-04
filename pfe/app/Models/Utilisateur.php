@@ -25,8 +25,10 @@ class Utilisateur extends Model
         'nom',
         'email',
         'mot_de_passe',
+        'pseudonyme',
         'ville',
-        'type_utilisateur'
+        'type_utilisateur',
+        'statut'
     ];
 
     /**
@@ -46,4 +48,20 @@ class Utilisateur extends Model
     protected $casts = [
         'date_inscription' => 'datetime',
     ];
+
+    /**
+     * Get the annonces for the user.
+     */
+    public function annonces()
+    {
+        return $this->hasMany(Annonce::class, 'id_utilisateur');
+    }
+
+    /**
+     * Get the favorites for the user.
+     */
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class, 'id_utilisateur');
+    }
 }

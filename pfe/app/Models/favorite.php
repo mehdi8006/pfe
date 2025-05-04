@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Favorite extends Model
 {
     use HasFactory;
 
@@ -15,22 +15,20 @@ class Image extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_annonce',
-        'url',
-        'principale'
+        'id_utilisateur',
+        'id_annonce'
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
+     * Get the utilisateur that owns the favorite.
      */
-    protected $casts = [
-        'principale' => 'boolean',
-    ];
+    public function utilisateur()
+    {
+        return $this->belongsTo(Utilisateur::class, 'id_utilisateur');
+    }
 
     /**
-     * Get the annonce that owns the image.
+     * Get the annonce that owns the favorite.
      */
     public function annonce()
     {

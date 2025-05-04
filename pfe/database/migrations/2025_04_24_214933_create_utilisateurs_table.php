@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('email', 100)->unique();
             $table->string('mot_de_passe', 255);
             $table->string('ville', 100);
-            $table->timestamp('date_inscription')->useCurrent();
             $table->enum('type_utilisateur', ['admin', 'normal'])->default('normal');
-            $table->timestamps(); // Creates created_at and updated_at columns
+            $table->enum('statut', ['en_attente', 'valide', 'supprime'])->default('en_attente');
+            $table->timestamp('date_inscription')->useCurrent();
+            $table->timestamps();
         });
     }
 

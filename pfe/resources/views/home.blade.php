@@ -24,6 +24,7 @@
 
 @if ($page=='page2')
 @section('main')
+<x-home.filtre/>
 <x-home.pagecarte :ads="$c" />
 @endsection
 @endif
@@ -31,6 +32,12 @@
 @if ($page=='page3')
 @section('main')
 <x-home.detailscarte :ads="$details" :ads1="$ads" />
+@endsection    
+@endif
+
+@if ($page=='page4')
+@section('main')
+<x-home.auth />
 @endsection    
 @endif
 </body>
